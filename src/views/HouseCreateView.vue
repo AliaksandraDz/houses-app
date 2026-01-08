@@ -481,24 +481,30 @@ export default {
       isSubmitting.value = true
 
       try {
-        const data = new FormData()
-        data.append('price', form.value.price)
-        data.append('bedrooms', form.value.rooms.bedrooms)
-        data.append('bathrooms', form.value.rooms.bathrooms)
-        data.append('size', form.value.size)
-        data.append('streetName', form.value.location.street)
-        data.append('houseNumber', form.value.location.houseNumber)
-        data.append('numberAddition', form.value.location.houseNumberAddition)
-        data.append('zip', form.value.location.zip)
-        data.append('city', form.value.location.city)
-        data.append('constructionYear', form.value.constructionYear)
-        data.append('hasGarage', form.value.hasGarage)
-        data.append('description', form.value.description)
 
-        const imageData = new FormData()
-        imageData.append('image', image.value)
+        const payload = {
+          price: Number(form.value.price),
+          size: Number(form.value.size),
+          hasGarage: form.value.hasGarage,
+          constructionYear: Number(form.value.constructionYear),
+          description: form.value.description,
+          madeByMe: true,
 
-        const createdHouse = await store.addHouse(data, imageData)
+          location: {
+            street: form.value.location.street,
+            houseNumber: Number(form.value.location.houseNumber),
+            houseNumberAddition: form.value.location.houseNumberAddition,
+            zip: form.value.location.zip,
+            city: form.value.location.city,
+          },
+
+          rooms: {
+            bedrooms: Number(form.value.rooms.bedrooms),
+            bathrooms: Number(form.value.rooms.bathrooms),
+          },
+        }
+
+        const createdHouse = await store.addHouse(payload)
 
         router.push({
             name: 'HouseDetailsView',

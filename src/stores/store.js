@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia';
 import { baseUrl } from '../shared/baseUrl';
-import { apiKey } from '../shared/apiKey';
-
 
 /* =====================================================
 * Main application store
@@ -24,7 +22,9 @@ export const useStore = defineStore('store', {
     async getHouses() {
       const res = await fetch(`${baseUrl}`, {
         method: "GET",
-        headers: { "X-Api-Key": apiKey },
+        headers: {
+          "Content-Type": "application/json"
+        },
       });
 
       if (!res.ok) {
@@ -39,22 +39,23 @@ export const useStore = defineStore('store', {
     async getHouseById(id) {
       const res = await fetch(`${baseUrl}/${id}`, {
         method: "GET",
-        headers: { "X-Api-Key": apiKey },
+        headers: {
+          "Content-Type": "application/json"
+        },
       });
     
       if (!res.ok) {
         throw new Error(`Failed to fetch house ${id}`);
       }
-    
-      const data = await res.json()
-      return data[0]
+
+      return await res.json()
     },
 
     async deleteHouse(id) {
       const res = await fetch(`${baseUrl}/${id}`, {
         method: "DELETE",
         headers: {
-          "X-Api-Key": apiKey
+          "Content-Type": "application/json"
         },
       });
           
@@ -67,14 +68,14 @@ export const useStore = defineStore('store', {
       this.isActive = buttonType;
     },
 
-    async addHouse(houseFormData, imageFormData) {
+    async addHouse(houseFormData) {
 
       const res = await fetch(baseUrl, {
         method: 'POST',
         headers: {
-          'X-Api-Key': apiKey,
+          "Content-Type": "application/json"
         },
-        body: houseFormData,
+        body: JSON.stringify(houseFormData)
       })
     
       if (!res.ok) {
@@ -90,58 +91,23 @@ export const useStore = defineStore('store', {
         console.error('Non-JSON response:', text)
         throw new Error('Invalid server response')
       }
-
     
-      const imageRes = await fetch(
-        `${baseUrl}/${createdHouse.id}/upload`,
-        {
-          method: 'POST',
-          headers: {
-            'X-Api-Key': apiKey,
-          },
-          body: imageFormData,
-        }
-      )
+      this.houses.push(createdHouse)
     
-      if (!imageRes.ok) {
-        throw new Error('Failed to upload image')
-      }
-
-      const houseWithOwnership = {
-        ...createdHouse,
-        madeByMe: true,
-      }
-    
-      this.houses.push(houseWithOwnership)
-    
-      return houseWithOwnership
+      return createdHouse
     },
 
-    async editHouse(houseFormData, imageFormData, id) {
+    async editHouse(houseFormData, id) {
       const res = await fetch(`${baseUrl}/${id}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
-          'X-Api-Key': apiKey,
+          "Content-Type": "application/json"
         },
-        body: houseFormData,
+        body: JSON.stringify(houseFormData),
       })
     
       if (!res.ok) {
         throw new Error(`Failed to update house ${id}`)
-      }
-    
-      if (imageFormData) {
-        const imageRes = await fetch(`${baseUrl}/${id}/upload`, {
-          method: 'POST',
-          headers: {
-            'X-Api-Key': apiKey,
-          },
-          body: imageFormData,
-        })
-    
-        if (!imageRes.ok) {
-          throw new Error('Failed to upload image')
-        }
       }
 
       const index = this.houses.findIndex(h => h.id === id)

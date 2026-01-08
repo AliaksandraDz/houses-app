@@ -1,6 +1,6 @@
 <template>
 
-    <div class="house-details main">
+  <div class="house-details main">
     <!-- Loader -->
     <div v-if="isLoading" class="main-house-card --loading">
       Loading house...
@@ -40,7 +40,7 @@
 
       <img
         class="main-house-card-image"
-        :src="houseDetails?.image"
+        src="../assets/img_placeholder_house@3x.png" 
         alt="House"
       />
 
@@ -67,7 +67,7 @@
         <p class="main-house-card-meta">
           <span class="meta-item">
             <img src="../assets/ic_location@3x.png" alt="Location" />
-            {{ houseDetails?.location?.zip }} {{ houseDetails?.location?.city }}
+            {{ houseDetails?.location?.zip }} {{ houseDetails?.location?.houseNumberAddition }} {{ houseDetails?.location?.city }}
           </span>
         </p>
 
@@ -116,9 +116,9 @@
       <h2>Recommended for you</h2>
       <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
           <div class="recommended-card-info" @click="navigateToHouseDetails(recommendedHouse.id)">
-              <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" />
+              <img src="../assets/img_placeholder_house@3x.png"  class="recommended-card-info-img" alt="House Image" />
               <div class="recommended-card-text">
-                  <h3 class="recommended-house-card-title">{{ recommendedHouse.location.street }} {{ recommendedHouse.location.houseNumber }}</h3>
+                  <h3 class="recommended-house-card-title">{{ recommendedHouse.location.street }} {{ recommendedHouse.location?.houseNumberAddition }}  {{ recommendedHouse.location.houseNumber }}</h3>
                   <p class="recommended-house-card-price">€ {{ recommendedHouse.price }} </p>
                   <p class="recommended-house-card-location">{{ recommendedHouse.location.zip }} {{ recommendedHouse.location.city }}</p>
                   <p class="recommended-house-meta">

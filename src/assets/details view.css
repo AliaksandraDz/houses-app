@@ -9,12 +9,12 @@
       }
       
       .main-house-card {
-        flex: 0 1 50%;
+        flex: 1 1 50%;
         box-sizing: border-box;
       }
       
       .recommended-houses {
-        flex: 0 1 20%;
+        flex: 1 1 20%;
         box-sizing: border-box;
         margin-top: 76px;
       }
@@ -126,6 +126,7 @@
       @media (min-width: 769px) {
         .house-details {
           gap: 100px;
+          padding-inline: 300px;
         }
         .house-actions-sm {
           display: none

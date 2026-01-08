@@ -486,21 +486,20 @@ export default {
       try {
         const house = await store.getHouseById(route.params.id)
 
-        form.value.location.street = house.location.street
-        form.value.location.houseNumber = house.location.houseNumber
-        form.value.location.houseNumberAddition = house.location.houseNumberAddition || ''
-        form.value.location.zip = house.location.zip
-        form.value.location.city = house.location.city
+        if (!house) {
+          console.error(`House with id ${route.params.id} not found.`)
+          return
+        }
 
-        form.value.price = house.price
-        form.value.size = house.size
-        form.value.hasGarage = house.hasGarage
-
-        form.value.rooms.bedrooms = house.rooms.bedrooms
-        form.value.rooms.bathrooms = house.rooms.bathrooms
-
-        form.value.constructionYear = house.constructionYear
-        form.value.description = house.description
+        Object.assign(form.value, {
+          price: house.price || '',
+          size: house.size || '',
+          hasGarage: house.hasGarage ?? '',
+          constructionYear: house.constructionYear || '',
+          description: house.description || '',
+          rooms: house.rooms || { bedrooms: '', bathrooms: '' },
+          location: house.location || { street: '', houseNumber: '', houseNumberAddition: '', zip: '', city: '' }
+        })
 
         if (house.image && imageWrapper.value) {
           imageWrapper.value.style.backgroundImage = `url(${house.image})`
@@ -530,27 +529,30 @@ export default {
       isSubmitting.value = true
 
       try {
-        const data = new FormData()
-        data.append('price', form.value.price)
-        data.append('bedrooms', form.value.rooms.bedrooms)
-        data.append('bathrooms', form.value.rooms.bathrooms)
-        data.append('size', form.value.size)
-        data.append('streetName', form.value.location.street)
-        data.append('houseNumber', form.value.location.houseNumber)
-        data.append('numberAddition', form.value.location.houseNumberAddition)
-        data.append('zip', form.value.location.zip)
-        data.append('city', form.value.location.city)
-        data.append('constructionYear', form.value.constructionYear)
-        data.append('hasGarage', String(form.value.hasGarage))
-        data.append('description', form.value.description)
 
-        let imageData = null
-        if (hasNewImage.value) {
-          imageData = new FormData()
-          imageData.append('image', image.value)
+        const payload = {
+          price: Number(form.value.price),
+          size: Number(form.value.size),
+          hasGarage: form.value.hasGarage,
+          constructionYear: Number(form.value.constructionYear),
+          description: form.value.description,
+          madeByMe: true,
+
+          location: {
+            street: form.value.location.street,
+            houseNumber: Number(form.value.location.houseNumber),
+            houseNumberAddition: form.value.location.houseNumberAddition,
+            zip: form.value.location.zip,
+            city: form.value.location.city,
+          },
+
+          rooms: {
+            bedrooms: Number(form.value.rooms.bedrooms),
+            bathrooms: Number(form.value.rooms.bathrooms),
+          },
         }
 
-        await store.editHouse(data, imageData, route.params.id)
+        await store.editHouse(payload, route.params.id)
 
         router.push({
           name: 'HouseDetailsView',
