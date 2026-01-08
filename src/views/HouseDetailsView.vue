@@ -47,7 +47,7 @@
       <div class="main-house-card-info">
         <div class="main-house-card-header">
           <h1 class="main-house-card-title">
-            {{ houseDetails?.location?.street }} {{ houseDetails?.location?.houseNumber }}
+            {{ houseDetails?.location?.street }} {{ houseDetails?.location?.houseNumber }} {{ houseDetails?.location?.houseNumberAddition }} 
           </h1>
 
           <!-- Large devices -->
@@ -67,7 +67,7 @@
         <p class="main-house-card-meta">
           <span class="meta-item">
             <img src="../assets/ic_location@3x.png" alt="Location" />
-            {{ houseDetails?.location?.zip }} {{ houseDetails?.location?.houseNumberAddition }} {{ houseDetails?.location?.city }}
+            {{ houseDetails?.location?.zip }} {{ houseDetails?.location?.city }}
           </span>
         </p>
 
@@ -118,7 +118,8 @@
           <div class="recommended-card-info" @click="navigateToHouseDetails(recommendedHouse.id)">
               <img src="../assets/img_placeholder_house@3x.png"  class="recommended-card-info-img" alt="House Image" />
               <div class="recommended-card-text">
-                  <h3 class="recommended-house-card-title">{{ recommendedHouse.location.street }} {{ recommendedHouse.location?.houseNumberAddition }}  {{ recommendedHouse.location.houseNumber }}</h3>
+                  <h3 class="recommended-house-card-title">{{ recommendedHouse.location.street }}
+                    {{ recommendedHouse.location.houseNumber }} {{ recommendedHouse.location?.houseNumberAddition }}</h3>
                   <p class="recommended-house-card-price">€ {{ recommendedHouse.price }} </p>
                   <p class="recommended-house-card-location">{{ recommendedHouse.location.zip }} {{ recommendedHouse.location.city }}</p>
                   <p class="recommended-house-meta">

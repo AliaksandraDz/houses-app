@@ -158,12 +158,12 @@
     }
     .house-create,
     .house-edit {
-        padding: 0px 0px 16px 228px;
+        padding: 0px 0px 16px 300px;
       }
       .house-create-wrapper,
       .house-edit-wrapper {
         max-width: 500px;
-        padding: 48px 16px 96px;
+        padding: 48px 0;
       }
       .create-header-sm,
       .edit-header-sm {

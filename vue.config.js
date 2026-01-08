@@ -9,5 +9,5 @@ module.exports = defineConfig({
       webSocketURL: 'ws://localhost:8080/ws',
     },
   },
-  publicPath: process.env.NODE_ENV === 'production' ? '/Vue3-house-listing-app/' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/houses-app/' : '/'
 })
