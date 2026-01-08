@@ -1,0 +1,197 @@
+  /* =========================
+     Details view
+     ========================= */
+
+     .house-details {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      
+      .main-house-card {
+        flex: 0 1 50%;
+        box-sizing: border-box;
+      }
+      
+      .recommended-houses {
+        flex: 0 1 20%;
+        box-sizing: border-box;
+        margin-top: 76px;
+      }
+      .recommended-houses h2 {
+        padding-bottom: 15px;
+      }
+      
+      .recommended-house-meta {
+        display: flex;
+        font-size: 15px;
+        padding-top: 7px;
+        gap: 20px;
+        color: var(--dark-grey);
+      }
+      
+      .recommended-house-card-title {
+        font-size: 15px;
+        color: var(--black);
+        font-weight: 700;
+      }
+      
+      .recommended-house-card-price {
+        font-size: 15px;
+        color: var(--dark-grey);
+        font-weight: 600;
+      }
+      
+      .recommended-house-card-location {
+        font-size: 15px;
+        color: var(--grey);
+        font-weight: 500;
+      }
+      
+      .main-house-card-image {
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-right: 28px;
+        z-index: -1;
+        width: 100%;
+      }
+      
+      .main-house-card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        padding: 30px;
+        background-color: var(--white);
+      }
+      
+      .main-house-card-info p {
+        color: var(--dark-grey);
+      }
+      
+      .main-house-card-price {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      
+      .main-house-card-address {
+        margin-bottom: 12px;
+      }
+      
+      .main-house-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        font-size: 14.4px;
+        font-weight: 600;
+      }
+      .main-house-card-description {
+        padding-top: 10px;
+      }
+      .btn-back {
+        background-color: transparent;
+        padding: 30px 0;
+      }
+      .btn-delete, .btn-edit {
+        background-color: transparent;
+        padding: 0 0 0 10px;
+      }
+      .main-house-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .recommended-house {
+        background-color: var(--white);
+        position: relative; 
+        margin-bottom: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 3px 10px var(--light-grey);
+      }
+      .recommended-card-info {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+      .recommended-card-info-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      /* Large devices */
+      @media (min-width: 769px) {
+        .house-details {
+          gap: 100px;
+        }
+        .house-actions-sm {
+          display: none
+        }
+        .house-actions {
+          display: flex;
+          gap: 8px;
+        }
+        .btn-back-label {
+          font-size: 16px;
+          color: var(--black);
+          font-family: "Montserrat";
+          font-weight: 600;
+        }
+        .recommended {
+          width: 40%;
+          margin: -20px 0 0 30px;
+        }
+      }
+
+      /* Small devices */
+      @media (max-width: 768px) {
+        .house-details{
+          flex-direction: column;
+          padding-bottom: 50px;
+        }
+        .main-house-card, .recommended-houses {
+          flex: 100%;
+          position: relative; 
+        }
+        .recommended-houses {
+          padding-inline: 20px;
+        }
+        .main-house-card-info {
+          border-radius: 40px 40px 0px 0px;
+          margin-top: -40px;
+          position: relative;
+        }
+        .recommended-houses {
+          margin-top: 30px;
+        }
+        .btn-back-label {
+          display: none;
+        }
+        .btn-back {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          z-index: 10;
+          border-radius: 50%;
+          padding: 8px;
+        }
+        .house-actions-sm {
+          display: flex;
+          gap: 8px;
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          z-index: 10;
+          padding: 8px;
+        }
+        .house-actions {
+          display: none
+        }
+        .recommended {
+          width: 90%;
+          margin: 100px auto 
+        }
+      }

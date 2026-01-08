@@ -1,0 +1,39 @@
+  /* =========================
+     Not found
+     ========================= */
+
+  .no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+  }
+  .no-results p {
+    font-family: "Montserrat";
+    font-weight: 500;
+    color: var(--dark-grey)
+  }
+  .no-results-text {
+    padding-top: 40px;
+  }
+
+  /* Small devices */
+  @media (max-width: 768px) {
+    .no-results p {
+      font-size: 14px;
+    }
+    .no-results img {
+      height: 140px;
+    }
+  }
+
+  /* Large devices */
+  @media (min-width: 769px) {
+    .no-results p {
+      font-size: 18px;
+    }
+    .no-results img {
+      height: 180px;
+    }
+  }

@@ -1,0 +1,232 @@
+  /* =========================
+     Home view
+     ========================= */
+  
+  .houses-page {
+    margin: 32px 0 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* top row: title + create button */
+  .houses-header {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  
+  .houses-title {
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .btn-primary {
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 7px;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 46px;
+  }
+  
+  /* create button icon and label */
+  .btn-create-icon-sm {
+    height: 18px;
+  }
+  
+  .create-button img {
+    display: none;
+  }
+  
+  .btn-create-label {
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  
+  /* Search + toggle row */
+  .houses-controls {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  
+  /* Search bar */
+  .search-bar {
+    position: relative;
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .search-bar-input {
+    width: 100%;
+    height: 46px;
+    padding-left: 60px;
+    padding-right: 50px;
+    border-radius: 7px;
+    border: none;
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .search-bar-input::placeholder {
+    color: var(--grey);
+  }
+  
+  /* Search button */
+  .search-bar-icon {
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: default;
+  }
+  .search-bar-icon img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Clear button */
+  .search-bar-clear {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+  }
+
+    /* Sort toggle (price / size) */
+    .sort-toggle {
+      display: inline-flex;
+      border-radius: 7px;
+      overflow: hidden;
+      background-color: var(--grey);
+    }
+    
+    .sort-toggle-btn {
+      padding: 5px 50px;
+      border: none;
+      background: transparent;
+      color: var(--white);
+      font-weight: 700;
+      height: 46px;
+    }
+  
+    @media (min-width: 769px) {
+      .sort-toggle-btn,
+      .btn-primary {
+        font-size: 18px;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .sort-toggle-btn,
+      .btn-primary {
+        font-size: 12px;
+      }
+    }
+    
+    .sort-toggle-btn--active {
+      background-color: var(--red);
+    }
+
+      
+  .search-result {
+    width: 100%;
+  }
+
+  /* Large devices */
+  @media (min-width: 769px) {
+    .btn-create-icon-sm {
+      display: none;
+    }
+    .houses-page {
+      padding-inline: 300px;
+    }
+  }
+  
+  /* Small devices */
+  @media (max-width: 768px) {
+    .search-bar {
+      max-width: none;
+    }
+
+    .btn-create-icon-lg {
+      display: none;
+    }
+  
+    .search-bar-input {
+      height: 44px;
+      font-size: 15px;
+    }
+  
+    .houses-page {
+      width: 100%; 
+    }
+
+    .houses-header {
+      padding: 0 20px;
+    }
+  
+    .houses-title {
+      font-size: 25.6px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .search-result {
+      width: 100%;
+      padding: 0 20px 20px;
+    }
+  
+    /* create button: icon only on small screens */
+    .btn-create-label {
+      display: none;
+    }
+  
+    .btn-primary.btn-create {
+      padding: 6.4px 9.6px;
+      border-radius: 50%;
+      background-color: var(--soft-white);
+    }
+  
+    .houses-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      margin: 0;
+      padding: 0 20px 20px;
+    }
+  
+    .sort-toggle {
+      width: 100%;
+    }
+  
+    .sort-toggle-btn {
+      flex: 1;
+      text-align: center;
+      padding-inline: 0;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .search-result {
+      padding-bottom: 20px;
+    }
+  }

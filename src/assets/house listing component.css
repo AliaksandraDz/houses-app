@@ -1,0 +1,131 @@
+  /* =========================
+     House listing component
+     ========================= */
+  
+     .houses-list {
+        margin: 0 auto 25px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5px;
+      }
+      
+      .house-card {
+        display: flex;
+        align-items: stretch;
+        background: var(--white);
+        border-radius: 7px;
+        box-shadow: 0 3px 10px var(--light-grey);
+        padding: 20px 24px;
+        margin-inline: auto;
+      }
+    
+      .house-card-info h3,
+      .house-card-info p {
+        font-family: "Open Sans";
+      }
+
+      .house-card-image {
+        border-radius: 7px;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-right: 28px;
+      }
+      
+      .house-card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        width: 100%
+      }
+      
+      .house-card-title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        color: var(--black);
+        font-weight: 700;
+      }
+      
+      .house-card-price {
+        font-weight: 600;
+        color: var(--dark-grey);
+      }
+      
+      .house-card-address {
+        color: var(--grey);
+        font-weight: 500;
+      }
+      
+      .house-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 16px;
+        color: var(--dark-grey);
+        font-weight: 500;
+      }
+      
+      .meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6.4px;
+      }
+
+      .meta-item img {
+        width: 18px;
+      }
+      
+      .house-card:hover {
+        cursor: pointer;
+        box-shadow: 0 5px 10px var(--light-grey);
+        transform: translateY(-1px);
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+      }
+    
+      /* Small devices */
+      @media (max-width: 768px) {
+        .house-card {
+          width: 100%;
+          padding: 15px;
+          margin-bottom: 15px;
+        }
+
+        .house-card-image {
+          width: 130px;
+          height: 130px;
+        }
+
+        .house-card-info h3,
+        .house-card-info p {
+          font-size: 12px;
+        }
+
+        .houses-list,
+        .loading  {
+          padding: 0 20px 50px 20px;
+        }
+      }
+    
+      /* Large devices */
+      @media (min-width: 769px) {
+        .houses-list,
+        .loading {
+          padding-inline: 300px;
+        }
+    
+        .house-card {
+          padding: 20px 24px;
+          margin-bottom: 20px;
+        }
+    
+        .house-card-info h3,
+        .house-card-info p {
+          font-size: 16px;
+        }
+    
+        .house-card-image {
+          width: 150px;
+          height: 150px;
+        }
+      }

@@ -1,0 +1,132 @@
+  /* =========================
+   CSS Reset
+   ========================= */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+  
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  #root, #-next {
+    isolation: isolate;
+  }
+
+    /* =========================
+     Main
+     ========================= */
+
+  :root {
+    --black: #000000;
+    --dark-grey: #4A4B4C;
+    --blue: #067BC2;
+    --red: #EB5440;
+    --light-grey: #E8E8E8;
+    --grey: #C3C3C3;
+    --soft-white: #F6F6F6;
+    --white: #FFFFFF;
+  }
+  
+  body {
+    background: var(--soft-white);
+    font-family: "Open Sans";
+  }
+  
+  h1, h2, button {
+    font-family: "Montserrat";
+    font-weight: 700;
+  }
+  
+  label {
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: var(--dark-grey)
+  }
+  
+  input, select {
+    font-family: "Open Sans";
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    gap: 10px;
+  }
+
+  /* Large devices */
+  @media (min-width: 769px) {
+    body, button, .btn {
+      font-size: 18px;
+    }
+    h1 { 
+      font-size: 32px;
+    }
+    h2 { 
+      font-size: 22px; 
+    }
+    a img, button img {
+      height:  18px;
+    }
+    label, input, select, textarea {
+      font-size: 14px;
+    }
+  }
+  
+  /* Small devices */
+  @media (max-width: 768px) {
+    body, button, .btn,
+    label, input, select,
+    textarea  {
+      font-size: 12px;
+    }
+    h1 {
+      font-size: 18px;
+    }
+    h2 { 
+      font-size: 14px; 
+    }
+    a img, button img {
+      height:  16px;
+    }
+  }
